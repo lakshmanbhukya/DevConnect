@@ -44,5 +44,3 @@ router.post('/addUser', async (req, res) => {
 });
 
 module.exports = router;
-
-//"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjg1ZDU5M2EyYTk2OTIwMjk4OTgzMTA4In0sImlhdCI6MTc1MDk0ODE1NCwiZXhwIjoxNzUwOTUxNzU0fQ.QSa0C6B341ENBW5ItM9UMzjuQHatdkXcH9coH5KJLUw"

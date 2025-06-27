@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const Post = require("../models/Post");
-router.get("/", async (req, res) => {
+const protected = require('../middleware/middleware');
+
+router.get("/",async (req, res) => {
   try {
     const posts = await Post.find().sort({ date: -1 });
     res.json(posts);
@@ -9,7 +11,7 @@ router.get("/", async (req, res) => {
     res.status(500).json({ error: "Error fetching posts" });
   }
 });
-router.post("/addPost", async (req, res) => {
+router.post("/addPost", protected, async (req, res) => {
   const { user, text, name, avatar } = req.body;
 
   if (!user || !text) {
