@@ -23,7 +23,7 @@ app.get("/", (req, res) => {
     endpoints: {
       root: "/",
       users: "api/user",
-      developers: "api/profile",
+      auth: "api/auth",
       posts: "api/posts",
     },
   });
