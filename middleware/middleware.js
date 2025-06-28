@@ -8,14 +8,14 @@ function protected(req, res, next) {
 
   try {
     const verified = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = verified;
-    console.log(verified);
+    req.user = verified.user;
+    // console.log(verified);
     next();
   } catch (err) {
     res.status(400).send("Invalid Token");
   }
 }
-module.exports =protected;
+module.exports = protected;
 // const token = "paste_jwt_here_and_chech_it";
 // const secret = "secret"; // exactly what's in your .env file
 
