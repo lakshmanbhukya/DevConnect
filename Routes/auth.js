@@ -42,7 +42,7 @@ router.post("/login", async (req, res) => {
 });
 
 router.post("/register", async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password , avatar } = req.body;
   try {
     let user = await User.findOne({ email });
     if (user) {
@@ -56,25 +56,11 @@ router.post("/register", async (req, res) => {
       name,
       email,
       password: hashedPassword,
+      avatar,
     });
 
     await user.save();
-
-    const payload = {
-      user: {
-        id: user.id,
-      },
-    };
-
-    jwt.sign(
-      payload,
-      process.env.JWT_SECRET,
-      { expiresIn: 3600 },
-      (err, token) => {
-        if (err) throw err;
-        res.json({ token });
-      }
-    );
+    res.json({ user ,"msg":"Registration Successfull"});
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
