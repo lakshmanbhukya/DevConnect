@@ -22,9 +22,10 @@ app.get("/", (req, res) => {
     message: "Welcome to DevConnect",
     endpoints: {
       root: "/",
-      users: "api/user",
-      auth: "api/auth",
+      users: ["api/user",],
+      auth: ["api/auth", "api/auth/register,api/auth/login"],
       posts: "api/posts",
+      middleware: "a protected route with jwt authentication",
     },
   });
 });
